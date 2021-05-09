@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Table(name="JobPositions")
 public class JobPosition {
     @Id
-    @GeneratedValue
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column(name="Id")
     private int id;
 
