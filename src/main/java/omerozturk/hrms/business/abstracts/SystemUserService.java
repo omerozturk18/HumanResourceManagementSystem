@@ -1,9 +1,15 @@
 package omerozturk.hrms.business.abstracts;
 
+import omerozturk.hrms.core.utilities.result.DataResult;
+import omerozturk.hrms.core.utilities.result.Result;
 import omerozturk.hrms.entities.concretes.SystemUser;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface SystemUserService {
-    List<SystemUser> getAll();
+    DataResult<List<SystemUser>> getAll();
+    Result add(SystemUser systemUser);
+    Result delete(SystemUser systemUser);
+    DataResult<Optional<SystemUser>> getById(int systemUserId);
 }

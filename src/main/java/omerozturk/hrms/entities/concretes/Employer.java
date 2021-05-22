@@ -1,12 +1,16 @@
 package omerozturk.hrms.entities.concretes;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Data
 @Entity
 @Table(name = "Employers")
+@AllArgsConstructor
+@NoArgsConstructor
 public class Employer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

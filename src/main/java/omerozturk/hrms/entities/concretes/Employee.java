@@ -1,6 +1,8 @@
 package omerozturk.hrms.entities.concretes;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -8,6 +10,8 @@ import java.util.Date;
 @Data
 @Entity
 @Table(name = "Employees")
+@AllArgsConstructor
+@NoArgsConstructor
 public class Employee {
 
     @Id

@@ -1,15 +1,17 @@
 package omerozturk.hrms.business.concretes;
 
 import omerozturk.hrms.business.abstracts.EmployerService;
-import omerozturk.hrms.business.abstracts.UserService;
+import omerozturk.hrms.core.utilities.result.DataResult;
+import omerozturk.hrms.core.utilities.result.Result;
+import omerozturk.hrms.core.utilities.result.SuccessDataResult;
+import omerozturk.hrms.core.utilities.result.SuccessResult;
 import omerozturk.hrms.dataAccess.abstracts.EmployerDao;
-import omerozturk.hrms.dataAccess.abstracts.UserDao;
 import omerozturk.hrms.entities.concretes.Employer;
-import omerozturk.hrms.entities.concretes.SystemUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EmployerManager implements EmployerService {
@@ -21,7 +23,24 @@ public class EmployerManager implements EmployerService {
     }
 
     @Override
-    public List<Employer> getAll() {
-        return employerDao.findAll();
+    public DataResult<List<Employer>> getAll() {
+        return new SuccessDataResult<List<Employer>>(employerDao.findAll(),"Veriler Listelendi");
+    }
+
+    @Override
+    public Result add(Employer employer) {
+        employerDao.save(employer);
+        return new SuccessResult(" Eklendi");
+    }
+
+    @Override
+    public Result delete(Employer employer) {
+        employerDao.delete(employer);
+        return new SuccessResult(" Silindi");
+    }
+
+    @Override
+    public DataResult<Optional<Employer>> getById(int employeeId) {
+        return new SuccessDataResult<Optional<Employer>>(employerDao.findById(employeeId),"Veri Listelendi");
     }
 }
