@@ -11,6 +11,8 @@ import omerozturk.hrms.dataAccess.abstracts.UserDao;
 import omerozturk.hrms.entities.concretes.Employee;
 import omerozturk.hrms.entities.concretes.Employer;
 import omerozturk.hrms.entities.concretes.User;
+import omerozturk.hrms.entities.concretes.dtos.EmployeeForRegisterDto;
+import omerozturk.hrms.entities.concretes.dtos.EmployerForRegisterDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,7 +32,9 @@ public class AuthManager implements AuthService {
     }
 
     @Override
-    public Result registerForEmployee(User user,Employee employee) {
+    public Result registerForEmployee(EmployeeForRegisterDto employeeDto) {
+        User user=new User(employeeDto.getId(),employeeDto.getEmail(),employeeDto.getPassword(),false,true);
+        Employee employee=new Employee(employeeDto.getId(), employeeDto.getFirstName(), employeeDto.getLastName(),employeeDto.getNationalityId(),employeeDto.getDateOfBirth(),true);
         var controlUser=checkUser(user);
         var controlEmployee= checkEmployee(employee);
         if (!controlUser.isSuccess()) return new ErrorResult(controlUser.getMessage());
@@ -40,7 +44,9 @@ public class AuthManager implements AuthService {
         return new SuccessResult(" Kimlik Doğrulama Başarılı, Kayıt Başarılı");
     }
     @Override
-    public Result registerForEmployer(User user, Employer employer) {
+    public Result registerForEmployer(EmployerForRegisterDto employerDto) {
+        User user=new User(employerDto.getId(),employerDto.getEmail(),employerDto.getPassword(),false,true);
+        Employer employer=new Employer(employerDto.getId(),employerDto.getCompanyName(),employerDto.getWebSite(),employerDto.getPhoneNumber(),false,true);
         var controlUser=checkUser(user);
         var controlEmployer= checkEmployer(employer,user);
         if (!controlUser.isSuccess()) return new ErrorResult(controlUser.getMessage());

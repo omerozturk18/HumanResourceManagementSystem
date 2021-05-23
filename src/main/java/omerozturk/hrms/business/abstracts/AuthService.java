@@ -1,11 +1,10 @@
 package omerozturk.hrms.business.abstracts;
 
 import omerozturk.hrms.core.utilities.result.Result;
-import omerozturk.hrms.entities.concretes.Employee;
-import omerozturk.hrms.entities.concretes.Employer;
-import omerozturk.hrms.entities.concretes.User;
+import omerozturk.hrms.entities.concretes.dtos.EmployeeForRegisterDto;
+import omerozturk.hrms.entities.concretes.dtos.EmployerForRegisterDto;
 
 public interface AuthService {
-    Result registerForEmployee(User user, Employee employee);
-    Result registerForEmployer(User user, Employer employer);
+    Result registerForEmployee(EmployeeForRegisterDto employeeDto);
+    Result registerForEmployer(EmployerForRegisterDto employerDto);
 }
