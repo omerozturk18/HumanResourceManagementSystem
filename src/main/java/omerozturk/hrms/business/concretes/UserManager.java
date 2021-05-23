@@ -1,10 +1,7 @@
 package omerozturk.hrms.business.concretes;
 
 import omerozturk.hrms.business.abstracts.UserService;
-import omerozturk.hrms.core.utilities.result.DataResult;
-import omerozturk.hrms.core.utilities.result.Result;
-import omerozturk.hrms.core.utilities.result.SuccessDataResult;
-import omerozturk.hrms.core.utilities.result.SuccessResult;
+import omerozturk.hrms.core.utilities.result.*;
 import omerozturk.hrms.dataAccess.abstracts.UserDao;
 import omerozturk.hrms.entities.concretes.User;
 
@@ -26,12 +23,6 @@ public class UserManager implements UserService {
     @Override
     public DataResult<List<User>> getAll() {
         return new SuccessDataResult<List<User>>(userDao.findAll(),"Veriler Listelendi");
-    }
-
-    @Override
-    public Result add(User user) {
-        userDao.save(user);
-        return new SuccessResult("Kullanıcı Eklendi");
     }
 
     @Override

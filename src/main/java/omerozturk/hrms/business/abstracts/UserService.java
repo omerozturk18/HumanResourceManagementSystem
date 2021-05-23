@@ -9,7 +9,6 @@ import java.util.Optional;
 
 public interface UserService {
     DataResult<List<User>> getAll();
-    Result add(User user);
     Result delete(User user);
     DataResult<Optional<User>> getById(int userId);
 }

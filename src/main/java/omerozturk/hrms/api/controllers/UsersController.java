@@ -25,10 +25,6 @@ public class UsersController {
        return userService.getAll();
     }
 
-    @PostMapping("/add")
-    public Result add(@RequestBody User user){
-        return userService.add(user);
-    }
 
     @PostMapping("/delete")
     public Result delete(@RequestBody User user){

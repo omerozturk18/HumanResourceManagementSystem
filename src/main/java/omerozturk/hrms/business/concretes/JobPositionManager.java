@@ -1,10 +1,7 @@
 package omerozturk.hrms.business.concretes;
 
 import omerozturk.hrms.business.abstracts.JobPositionService;
-import omerozturk.hrms.core.utilities.result.DataResult;
-import omerozturk.hrms.core.utilities.result.Result;
-import omerozturk.hrms.core.utilities.result.SuccessDataResult;
-import omerozturk.hrms.core.utilities.result.SuccessResult;
+import omerozturk.hrms.core.utilities.result.*;
 import omerozturk.hrms.dataAccess.abstracts.JobPositionDao;
 
 import omerozturk.hrms.entities.concretes.JobPosition;
@@ -32,6 +29,8 @@ public class JobPositionManager implements JobPositionService {
 
     @Override
     public Result add(JobPosition jobPosition) {
+       var controlJobPosition= checkJobPosition(jobPosition);
+       if (!controlJobPosition.isSuccess())return new ErrorResult(controlJobPosition.getMessage());
         jobPositionDao.save(jobPosition);
         return new SuccessResult("Eklendi");
     }
@@ -45,5 +44,13 @@ public class JobPositionManager implements JobPositionService {
     @Override
     public DataResult<Optional<JobPosition>> getById(int jobPositionId) {
         return new SuccessDataResult<Optional<JobPosition>>(jobPositionDao.findById(jobPositionId),"Veri Listelendi");
+    }
+
+    private Result checkJobPosition(JobPosition jobPosition)
+    {
+        for (JobPosition jobPositionOfList:jobPositionDao.findAll()) {
+            if (jobPosition.getPositionName().equals(jobPositionOfList.getPositionName())) return new ErrorResult("Bu İsimde Bir İş Pozisyonu Bulunmakatadır");
+        }
+        return new SuccessResult();
     }
 }

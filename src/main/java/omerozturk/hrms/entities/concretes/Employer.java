@@ -20,6 +20,9 @@ public class Employer {
     @Column(name="CompanyName")
     private String companyName;
 
+    @Column(name="WebSite")
+    private String webSite;
+
     @Column(name="PhoneNumber")
     private String phoneNumber;
 

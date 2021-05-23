@@ -1,11 +1,11 @@
 package omerozturk.hrms.core.utilities.result;
 
-public class ErorrResult extends Result{
-    public ErorrResult() {
+public class ErrorResult extends Result{
+    public ErrorResult() {
         super(false);
     }
 
-    public ErorrResult( String message) {
+    public ErrorResult(String message) {
         super(false, message);
     }
 }
