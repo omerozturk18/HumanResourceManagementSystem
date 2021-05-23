@@ -36,9 +36,11 @@ public class AuthManager implements AuthService {
         User user=new User(employeeDto.getId(),employeeDto.getEmail(),employeeDto.getPassword(),false,true);
         Employee employee=new Employee(employeeDto.getId(), employeeDto.getFirstName(), employeeDto.getLastName(),employeeDto.getNationalityId(),employeeDto.getDateOfBirth(),true);
         var controlUser=checkUser(user);
+        var controlPassword=checkPassword(employeeDto.getPassword(),employeeDto.getVerifyPassword());
         var controlEmployee= checkEmployee(employee);
-        if (!controlUser.isSuccess()) return new ErrorResult(controlUser.getMessage());
-        if (!controlEmployee.isSuccess()) return new ErrorResult(controlEmployee.getMessage());
+        if (!checkUser(user).isSuccess()) return new ErrorResult(controlUser.getMessage());
+        if (!controlPassword.isSuccess()) return new ErrorResult(controlPassword.getMessage());
+        if (!checkEmployee(employee).isSuccess()) return new ErrorResult(controlEmployee.getMessage());
         userDao.save(user);
         employeeDao.save(employee);
         return new SuccessResult(" Kimlik Doğrulama Başarılı, Kayıt Başarılı");
@@ -48,8 +50,10 @@ public class AuthManager implements AuthService {
         User user=new User(employerDto.getId(),employerDto.getEmail(),employerDto.getPassword(),false,true);
         Employer employer=new Employer(employerDto.getId(),employerDto.getCompanyName(),employerDto.getWebSite(),employerDto.getPhoneNumber(),false,true);
         var controlUser=checkUser(user);
+        var controlPassword=checkPassword(employerDto.getPassword(),employerDto.getVerifyPassword());
         var controlEmployer= checkEmployer(employer,user);
         if (!controlUser.isSuccess()) return new ErrorResult(controlUser.getMessage());
+        if (!controlPassword.isSuccess()) return new ErrorResult(controlPassword.getMessage());
         if (!controlEmployer.isSuccess()) return new ErrorResult(controlEmployer.getMessage());
         userDao.save(user);
         employerDao.save(employer);
@@ -67,6 +71,10 @@ public class AuthManager implements AuthService {
         for (User userOfList: userDao.findAll()) {
             if (user.getEmail().equals(userOfList.getEmail()))return new ErrorResult("Bu eposta kullanımda.");
         }
+        return new SuccessResult();
+    }
+    private Result checkPassword(String password,String verifyPassword){
+        if (!password.equals(verifyPassword))return new ErrorResult("Şifreler Eşleşmiyor");
         return new SuccessResult();
     }
     private Result checkEmployer(Employer employer,User user){
