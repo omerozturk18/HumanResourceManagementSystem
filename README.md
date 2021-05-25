@@ -1,0 +1,2 @@
+# HumanResourceManagementSystem
+Geliştirilme aşamasında
