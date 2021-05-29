@@ -31,4 +31,7 @@ public class Employer {
 
     @Column(name="Status")
     private boolean status;
+    
+     @OneToMany(mappedBy = "employer")
+    private List<JobPosting> jobPostings;
 }
