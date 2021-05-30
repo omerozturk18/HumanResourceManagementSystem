@@ -33,8 +33,8 @@ public class AuthManager implements AuthService {
 
     @Override
     public Result registerForEmployee(EmployeeForRegisterDto employeeDto) {
-        User user=new User(employeeDto.getId(),employeeDto.getEmail(),employeeDto.getPassword(),false,true);
-        Employee employee=new Employee(employeeDto.getId(), employeeDto.getFirstName(), employeeDto.getLastName(),employeeDto.getNationalityId(),employeeDto.getDateOfBirth(),true);
+        User user = modelMapper.map(employeeDto,User.class);
+        Employee employee = modelMapper.map(employeeDto,Employee.class);
         var controlUser=checkUser(user);
         var controlPassword=checkPassword(employeeDto.getPassword(),employeeDto.getVerifyPassword());
         var controlEmployee= checkEmployee(employee);
@@ -47,8 +47,8 @@ public class AuthManager implements AuthService {
     }
     @Override
     public Result registerForEmployer(EmployerForRegisterDto employerDto) {
-        User user=new User(employerDto.getId(),employerDto.getEmail(),employerDto.getPassword(),false,true);
-        Employer employer=new Employer(employerDto.getId(),employerDto.getCompanyName(),employerDto.getWebSite(),employerDto.getPhoneNumber(),false,true);
+        User user = modelMapper.map(employerDto,User.class);
+        Employer employer = modelMapper.map(employerDto,Employer.class);
         var controlUser=checkUser(user);
         var controlPassword=checkPassword(employerDto.getPassword(),employerDto.getVerifyPassword());
         var controlEmployer= checkEmployer(employer,user);
