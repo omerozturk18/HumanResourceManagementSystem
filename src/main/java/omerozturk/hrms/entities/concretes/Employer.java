@@ -11,11 +11,9 @@ import javax.persistence.*;
 @Table(name = "Employers")
 @AllArgsConstructor
 @NoArgsConstructor
+@PrimaryKeyJoinColumn(name = "id")
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobPostings"})
 public class Employer {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id")
-    private int id;
 
     @Column(name="CompanyName")
     private String companyName;
