@@ -22,5 +22,8 @@ public class JobPosition {
 
     @Column(name="Status")
     private boolean status;
+    
+     @OneToMany(mappedBy = "jobPosition")
+    private List<JobPosting> jobPostings;
 
 }
