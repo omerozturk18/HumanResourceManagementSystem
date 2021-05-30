@@ -11,11 +11,8 @@ import javax.persistence.*;
 @Table(name = "SystemUsers")
 @AllArgsConstructor
 @NoArgsConstructor
+@PrimaryKeyJoinColumn(name = "id")
 public class SystemUser {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id")
-    private int id;
 
     @Column(name="Roles")
     private String roles;
