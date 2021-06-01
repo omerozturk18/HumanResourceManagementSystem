@@ -12,8 +12,12 @@ import java.time.LocalDate;
 @Table(name = "Employees")
 @AllArgsConstructor
 @NoArgsConstructor
-@PrimaryKeyJoinColumn(name = "id")
 public class Employee {
+
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Column(name="Id")
+    private int id;
 
     @Column(name="FirstName")
     private String firstName;

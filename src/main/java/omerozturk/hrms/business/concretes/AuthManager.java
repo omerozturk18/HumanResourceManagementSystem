@@ -13,6 +13,7 @@ import omerozturk.hrms.entities.concretes.Employer;
 import omerozturk.hrms.entities.concretes.User;
 import omerozturk.hrms.entities.concretes.dtos.EmployeeForRegisterDto;
 import omerozturk.hrms.entities.concretes.dtos.EmployerForRegisterDto;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,13 +23,15 @@ public class AuthManager implements AuthService {
     private EmployeeDao employeeDao;
     private EmployerDao employerDao;
     private CustomerCheckService customerCheckService;
+    private ModelMapper modelMapper;
 
     @Autowired
-    public AuthManager(UserDao userDao, EmployeeDao employeeDao, EmployerDao employerDao, CustomerCheckService customerCheckService) {
+    public AuthManager(UserDao userDao, EmployeeDao employeeDao, EmployerDao employerDao, CustomerCheckService customerCheckService,ModelMapper modelMapper) {
         this.userDao = userDao;
         this.employeeDao = employeeDao;
         this.employerDao = employerDao;
         this.customerCheckService = customerCheckService;
+        this.modelMapper=modelMapper;
     }
 
     @Override

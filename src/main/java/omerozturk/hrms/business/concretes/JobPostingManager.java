@@ -2,14 +2,14 @@ package omerozturk.hrms.business.concretes;
 
 import omerozturk.hrms.business.abstracts.JobPostingService;
 import omerozturk.hrms.core.utilities.result.*;
-import omerozturk.hrms.dataAccess.abstracts.JobPostingDao;
 
+import omerozturk.hrms.dataAccess.abstracts.JobPostingDao;
 import omerozturk.hrms.entities.concretes.JobPosting;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class JobPostingManager implements JobPostingService {
@@ -18,13 +18,12 @@ public class JobPostingManager implements JobPostingService {
 
 	@Autowired
 	public JobPostingManager(JobPostingDao jobPostingDao) {
-		super();
 		this.jobPostingDao = jobPostingDao;
 	}
 
 	@Override
 	public Result add(JobPosting jobPosting) {
-		jobPosting.setActive(true);
+		jobPosting.setStatus(true);
 		// jobPosting.setReleaseDate(LocalDate.now());
 		jobPostingDao.save(jobPosting);
 		return new SuccessResult("İş ilanı eklendi");
@@ -36,7 +35,7 @@ public class JobPostingManager implements JobPostingService {
 		if (!jobPosting.isSuccess()) {
 			return new ErrorResult(jobPosting.getMessage());
 		}
-		jobPosting.getData().setActive(!jobPosting.getData().isActive());
+		jobPosting.getData().setStatus(!jobPosting.getData().isStatus());
 		jobPostingDao.save(jobPosting.getData());
 		return new SuccessResult("İlan durumu değiştirildi");
 	}
@@ -49,7 +48,7 @@ public class JobPostingManager implements JobPostingService {
 		}
 		return new SuccessDataResult<JobPosting>(result);
 	}
-
+/*
 	@Override
 	public DataResult<List<JobPosting>> getByActiveJobPostings() {
 		return new SuccessDataResult<List<JobPosting>>(jobPostingDao.getByIsActive(true));
@@ -70,5 +69,5 @@ public class JobPostingManager implements JobPostingService {
 	public DataResult<List<JobPosting>> getByEmployerJobPosting(int employerId) {
 		return new SuccessDataResult<List<JobPosting>>(jobPostingDao.getByIsActiveAndEmployerId(true, employerId));
 	}
-
+*/
 }

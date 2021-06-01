@@ -11,7 +11,7 @@ public interface JobPostingService {
 	Result add(JobPosting jobPosting);
 	Result changeJobPostingStatus(int jobPostingId);
 	DataResult<JobPosting> getByJobPostingId(int jobPostingId);
-	DataResult<List<JobPosting>> getByActiveJobPostings();
+	/*DataResult<List<JobPosting>> getByActiveJobPostings();
 	DataResult<List<JobPosting>> getByReleaseDateJobPosting(int value);
-	DataResult<List<JobPosting>> getByEmployerJobPosting(int employerId);
+	DataResult<List<JobPosting>> getByEmployerJobPosting(int employerId);*/
 }
