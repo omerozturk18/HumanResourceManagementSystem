@@ -7,9 +7,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface JobPostingDao extends JpaRepository<JobPosting,Integer> {
-   /* List<JobPosting> getByIsActive(boolean isActive);
+   List<JobPosting> getByStatus(boolean isActive);
 
-    List<JobPosting> getByIsActive(boolean isActive, Sort sort);
+    List<JobPosting> getByStatus(boolean isActive, Sort sort);
 
-    List<JobPosting> getByIsActiveAndEmployerId(boolean isActive, int id);*/
+    List<JobPosting> getByStatusAndEmployerId(boolean isActive, int id);
 }

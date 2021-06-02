@@ -5,6 +5,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ResumeDao extends JpaRepository<Resume,Integer> {
-    Resume getByJobSeekerId(int jobSeekerId);
-    Resume getByJobSeekerId(int jobSeekerId, Sort sort);
+   Resume getByEmployeeId(int employeeId);
+   Resume getByEmployeeId(int employeeId, Sort sort);
 }

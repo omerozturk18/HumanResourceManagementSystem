@@ -1,6 +1,7 @@
 package omerozturk.hrms.dataAccess.abstracts;
 
+import omerozturk.hrms.entities.concretes.City;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CityDao extends JpaRepository<CityDao,Integer> {
+public interface CityDao extends JpaRepository<City,Integer> {
 }
