@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.util.Date;
 
 @Data
 @Entity
@@ -29,7 +29,7 @@ public class Employee {
     private String nationalityIdent;
 
     @Column(name="BirthDate")
-    private LocalDate birthDate;
+    private Date birthDate;
 
     @Column(name="Status")
     private boolean status;

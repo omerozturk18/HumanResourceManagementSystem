@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Date;
 
 @Data
 @Entity
@@ -19,7 +20,7 @@ public class EmployeeImage {
     private int id;
 
     private String url;
-    private LocalDate uploadedAt;
+    private Date uploadedAt;
 
     @ManyToOne()
     private Employee employee;

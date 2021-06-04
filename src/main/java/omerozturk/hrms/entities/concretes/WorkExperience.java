@@ -1,13 +1,11 @@
 package omerozturk.hrms.entities.concretes;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
 @Data
 @Entity
@@ -25,7 +23,6 @@ public class WorkExperience {
     private Date departureDate;
 
     @ManyToOne()
-    @JsonIgnore
     @JoinColumn(name="resume_id")
     private Resume resume;
 

@@ -1,6 +1,5 @@
 package omerozturk.hrms.entities.concretes;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,7 +20,6 @@ public class ForeignLanguage {
     private int languagelevel;
 
     @ManyToOne()
-    @JsonIgnore
     @JoinColumn(name="resume_id")
     private Resume resume;
 

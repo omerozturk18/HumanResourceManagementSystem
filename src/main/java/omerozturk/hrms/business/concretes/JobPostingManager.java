@@ -5,26 +5,29 @@ import omerozturk.hrms.core.utilities.result.*;
 
 import omerozturk.hrms.dataAccess.abstracts.JobPostingDao;
 import omerozturk.hrms.entities.concretes.JobPosting;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Date;
 
 @Service
 public class JobPostingManager implements JobPostingService {
 
 	private JobPostingDao jobPostingDao;
+	private ModelMapper modelMapper;
 
 	@Autowired
-	public JobPostingManager(JobPostingDao jobPostingDao) {
+	public JobPostingManager(JobPostingDao jobPostingDao, ModelMapper modelMapper) {
 		this.jobPostingDao = jobPostingDao;
+		this.modelMapper=modelMapper;
 	}
 
 	@Override
 	public Result add(JobPosting jobPosting) {
 		jobPosting.setStatus(true);
-		// jobPosting.setReleaseDate(LocalDate.now());
+		jobPosting.setReleaseDate(new Date());
+		//JobPosting jobPosting = modelMapper.map(jobPostingDto,JobPosting.class);
 		jobPostingDao.save(jobPosting);
 		return new SuccessResult("İş ilanı eklendi");
 	}

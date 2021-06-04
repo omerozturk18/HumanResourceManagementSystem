@@ -4,6 +4,7 @@ import omerozturk.hrms.business.abstracts.JobPostingService;
 import omerozturk.hrms.core.utilities.result.DataResult;
 import omerozturk.hrms.core.utilities.result.Result;
 import omerozturk.hrms.entities.concretes.JobPosting;
+import omerozturk.hrms.entities.concretes.dtos.JobPostingDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,8 +21,8 @@ public class JobPostingsController {
     }
 
     @PostMapping("add")
-    public Result add(@RequestBody JobPosting jobPosting) {
-        return jobPostingService.add(jobPosting);
+    public Result add(@RequestBody JobPosting jobPostingDto) {
+        return jobPostingService.add(jobPostingDto);
     }
 
     @PostMapping("changeStatus")

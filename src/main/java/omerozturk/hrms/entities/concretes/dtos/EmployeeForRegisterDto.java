@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 @Data
 @AllArgsConstructor
@@ -15,7 +15,7 @@ public class EmployeeForRegisterDto {
     private String firstName;
     private String lastName;
     private String nationalityId;
-    private LocalDate dateOfBirth;
+    private Date dateOfBirth;
     private String email;
     private String password;
     private String verifyPassword;
