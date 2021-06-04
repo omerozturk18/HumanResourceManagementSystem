@@ -37,8 +37,8 @@ public class ResumesController {
         return ResponseEntity.badRequest().body(result);
     }
 
-    @GetMapping("/getByJobSeekerForResume")
-    public ResponseEntity getByJobSeekerForResume(int employeeId){
+    @GetMapping("/getByEmployeeForResume")
+    public ResponseEntity getByEmployeeForResume(int employeeId){
         var result = resumeService.getByEmployeeForResume(employeeId);
         if (result.isSuccess()){
             return ResponseEntity.ok(result);
