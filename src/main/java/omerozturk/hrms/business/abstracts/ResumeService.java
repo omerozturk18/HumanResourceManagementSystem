@@ -11,5 +11,4 @@ public interface ResumeService {
     Result add(ResumeDto resumeDto);
     DataResult<List<Resume>> getAll();
     DataResult<Resume> getByEmployeeForResume(int employeeId);
-    DataResult<Resume> getAllForInOrder(int employeeId);
 }

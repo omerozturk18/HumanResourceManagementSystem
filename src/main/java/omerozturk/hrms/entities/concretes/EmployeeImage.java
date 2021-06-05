@@ -1,5 +1,6 @@
 package omerozturk.hrms.entities.concretes;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,6 +14,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "employee_images")
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","employee"})
 public class EmployeeImage {
 
     @Id
@@ -23,6 +25,7 @@ public class EmployeeImage {
     private Date uploadedAt;
 
     @ManyToOne()
+    @JoinColumn(name="employee_id")
     private Employee employee;
 
 }

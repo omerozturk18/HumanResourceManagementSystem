@@ -1,18 +1,18 @@
 package omerozturk.hrms.entities.concretes;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Data
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name="abilities")
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","resume"})
 public class Ability {
 
     @Id
@@ -22,7 +22,6 @@ public class Ability {
     private String technologyName;
 
     @ManyToOne()
-    @JsonIgnore
     @JoinColumn(name="resume_id")
     private Resume resume;
 

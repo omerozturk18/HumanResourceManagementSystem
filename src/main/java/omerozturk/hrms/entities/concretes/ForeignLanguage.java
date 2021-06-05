@@ -1,5 +1,6 @@
 package omerozturk.hrms.entities.concretes;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,7 +18,7 @@ public class ForeignLanguage {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String languageName;
-    private int languagelevel;
+    private int languageLevel;
 
     @ManyToOne()
     @JoinColumn(name="resume_id")

@@ -21,8 +21,8 @@ public class SchoolController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity add(@RequestBody List<SchoolDto> schools) {
-        var result = schoolService.add(schools);
+    public ResponseEntity add(@RequestBody List<SchoolDto> schoolDtos) {
+        var result = schoolService.add(schoolDtos);
         if(result.isSuccess()){
             return ResponseEntity.ok(result);
         }

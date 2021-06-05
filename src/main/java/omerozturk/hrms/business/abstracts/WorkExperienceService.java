@@ -8,6 +8,6 @@ import omerozturk.hrms.entities.concretes.dtos.WorkExperienceDto;
 import java.util.List;
 
 public interface WorkExperienceService {
-    Result add (List<WorkExperienceDto> workExperience);
+    Result add (List<WorkExperienceDto> workExperienceDtos);
     DataResult<List<WorkExperience>> getByBusinessDate(int employeeId);
 }

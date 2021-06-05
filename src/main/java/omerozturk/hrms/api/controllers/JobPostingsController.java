@@ -29,7 +29,7 @@ public class JobPostingsController {
     public Result changeStatus(@RequestParam int jobPostingId) {
         return jobPostingService.changeJobPostingStatus(jobPostingId);
     }
-/*
+
     @GetMapping("getByActive")
     public Result getByActive() {
         return jobPostingService.getByActiveJobPostings();
@@ -43,5 +43,5 @@ public class JobPostingsController {
     @GetMapping("getByEmployer")
     public DataResult<List<JobPosting>> getByEmployer(@RequestParam int employerId) {
         return jobPostingService.getByEmployerJobPosting(employerId);
-    }*/
+    }
 }

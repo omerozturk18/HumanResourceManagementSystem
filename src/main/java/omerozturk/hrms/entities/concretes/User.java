@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.Email;
+
 import javax.persistence.*;
 
 @Data
@@ -18,6 +20,7 @@ public class User {
     @Column(name="Id")
     private int id;
 
+    @Email
     @Column(name="Email")
     private String email;
 

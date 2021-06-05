@@ -1,5 +1,6 @@
 package omerozturk.hrms.entities.concretes;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -30,11 +31,12 @@ public class Employer {
     private String phoneNumber;
 
     @Column(name="VerifedBySystem")
-    private boolean verifedBySystem;
+    private boolean verifedBySystem=false;
 
     @Column(name="Status")
-    private boolean status;
+    private boolean status=true;
     
      @OneToMany(mappedBy = "employer")
+     @JsonIgnore
     private List<JobPosting> jobPostings;
 }

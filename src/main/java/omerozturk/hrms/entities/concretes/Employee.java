@@ -1,36 +1,35 @@
 package omerozturk.hrms.entities.concretes;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @Entity
 @Table(name = "Employees")
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","resumes,employeeImages"})
 public class Employee {
 
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-    @Column(name="Id")
     private int id;
-
-    @Column(name="FirstName")
     private String firstName;
-
-    @Column(name="LastName")
     private String lastName;
-
-    @Column(name="NationalityIdent")
     private String nationalityIdent;
-
-    @Column(name="BirthDate")
-    private Date birthDate;
-
-    @Column(name="Status")
+    private LocalDate birthDate;
     private boolean status;
+
+    @OneToMany(mappedBy = "employee")
+    private List<Resume> resumes;
+
+    @OneToMany(mappedBy = "employee")
+    private List<EmployeeImage> employeeImages;
 }

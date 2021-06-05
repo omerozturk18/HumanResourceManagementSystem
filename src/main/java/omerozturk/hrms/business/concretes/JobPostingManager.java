@@ -7,9 +7,11 @@ import omerozturk.hrms.dataAccess.abstracts.JobPostingDao;
 import omerozturk.hrms.entities.concretes.JobPosting;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class JobPostingManager implements JobPostingService {
@@ -51,10 +53,10 @@ public class JobPostingManager implements JobPostingService {
 		}
 		return new SuccessDataResult<JobPosting>(result);
 	}
-/*
+
 	@Override
 	public DataResult<List<JobPosting>> getByActiveJobPostings() {
-		return new SuccessDataResult<List<JobPosting>>(jobPostingDao.getByIsActive(true));
+		return new SuccessDataResult<List<JobPosting>>(jobPostingDao.getByStatus(true));
 	}
 
 	@Override
@@ -65,12 +67,12 @@ public class JobPostingManager implements JobPostingService {
 		} else {
 			sort = Sort.by(Sort.Direction.ASC, "releaseDate");
 		}
-		return new SuccessDataResult<List<JobPosting>>(jobPostingDao.getByIsActive(true, sort));
+		return new SuccessDataResult<List<JobPosting>>(jobPostingDao.getByStatus(true, sort));
 	}
 
 	@Override
 	public DataResult<List<JobPosting>> getByEmployerJobPosting(int employerId) {
-		return new SuccessDataResult<List<JobPosting>>(jobPostingDao.getByIsActiveAndEmployerId(true, employerId));
+		return new SuccessDataResult<List<JobPosting>>(jobPostingDao.getByStatusAndEmployerId(true, employerId));
 	}
-*/
+
 }

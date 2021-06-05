@@ -8,6 +8,6 @@ import omerozturk.hrms.entities.concretes.dtos.SchoolDto;
 import java.util.List;
 
 public interface SchoolService {
-    Result add(List<SchoolDto> school);
+    Result add(List<SchoolDto> schoolDtos);
     DataResult<List<School>> getAllByEmployeeOrderByDateOfGraduation(int employeeId);
 }

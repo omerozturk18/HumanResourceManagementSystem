@@ -45,13 +45,4 @@ public class ResumesController {
         }
         return ResponseEntity.badRequest().body(result);
     }
-
-    @GetMapping("/getAllForInOrder")
-    public ResponseEntity getAllForInOrder(int employeeId){
-        var result = resumeService.getAllForInOrder(employeeId);
-        if (result.isSuccess()){
-            return ResponseEntity.ok(result);
-        }
-        return ResponseEntity.badRequest().body(result);
-    }
 }

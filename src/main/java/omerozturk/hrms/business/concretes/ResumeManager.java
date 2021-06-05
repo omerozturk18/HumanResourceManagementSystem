@@ -56,9 +56,4 @@ public class ResumeManager implements ResumeService {
     public DataResult<Resume> getByEmployeeForResume(int employeeId) {
         return new SuccessDataResult<Resume>(this.resumeDao.getResumeByEmployeeId(employeeId));
     }
-
-    @Override
-    public DataResult<Resume> getAllForInOrder(int employeeId) {
-        return null;
-    }
 }

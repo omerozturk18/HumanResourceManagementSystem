@@ -29,8 +29,8 @@ public class WorkExperiencesController {
     }
 
     @GetMapping("/getAllByBusinessDate")
-    public ResponseEntity getAllByBusinessDate(int jobSeekerId){
-        var result = workExperienceService.getByBusinessDate(jobSeekerId);
+    public ResponseEntity getAllByBusinessDate(int employeeId){
+        var result = workExperienceService.getByBusinessDate(employeeId);
         if (result.isSuccess()){
             return ResponseEntity.ok(result);
         }
