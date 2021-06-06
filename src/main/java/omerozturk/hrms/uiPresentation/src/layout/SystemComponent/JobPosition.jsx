@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Ablity() {
+export default function JobPosition() {
     return (
         <div>
             

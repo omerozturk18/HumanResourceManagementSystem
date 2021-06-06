@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/abilities")
+@CrossOrigin
 public class AbilitiesController {
 
     private AbilityService abilityService;

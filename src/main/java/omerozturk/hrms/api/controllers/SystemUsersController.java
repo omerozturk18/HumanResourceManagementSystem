@@ -13,6 +13,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/systemusers")
+@CrossOrigin
 public class SystemUsersController {
     private SystemUserService systemUserService;
 

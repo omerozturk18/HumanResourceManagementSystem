@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default class ResumeService {
     getAll() {
-        return axios.get("http://localhost:8080/api/resumes/getAll");
+        return axios.get("http://localhost:8080/api/resumes/getall");
     }
     getByEmployeeId(id) {
         return axios.get("http://localhost:8080/api/resumes/getByEmployeeForResume?employeeId=" + id);
