@@ -29,7 +29,7 @@ public class SchoolController {
         return ResponseEntity.badRequest().body(result);
     }
 
-    @GetMapping("/getAllByJobSeekerOrderByDateOfGraduation")
+    @GetMapping("/getAllByEmployeeOrderByDateOfGraduation")
     public ResponseEntity getAllByEmployeeOrderByDateOfGraduation(int employeeId){
         var result = schoolService.getAllByEmployeeOrderByDateOfGraduation(employeeId);
         if (result.isSuccess()){
