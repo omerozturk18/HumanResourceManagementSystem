@@ -23,6 +23,7 @@ public class Resume {
     private String description;
     private String githubAddress;
     private String linkedinAddress;
+    private boolean status;
 
     @OneToMany(mappedBy = "resume")
     private List<School> schools;

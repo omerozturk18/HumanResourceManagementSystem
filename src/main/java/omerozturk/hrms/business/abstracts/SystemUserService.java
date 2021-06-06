@@ -11,5 +11,5 @@ public interface SystemUserService {
     DataResult<List<SystemUser>> getAll();
     Result add(SystemUser systemUser);
     Result delete(SystemUser systemUser);
-    DataResult<Optional<SystemUser>> getById(int systemUserId);
+    DataResult<SystemUser> getById(int systemUserId);
 }

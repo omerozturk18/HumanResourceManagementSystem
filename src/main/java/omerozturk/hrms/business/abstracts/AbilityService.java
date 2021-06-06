@@ -3,10 +3,11 @@ package omerozturk.hrms.business.abstracts;
 import omerozturk.hrms.core.utilities.result.DataResult;
 import omerozturk.hrms.core.utilities.result.Result;
 import omerozturk.hrms.entities.concretes.Ability;
+import omerozturk.hrms.entities.dtos.AbilityDto;
 
 import java.util.List;
 
 public interface AbilityService {
-    Result add(List<Ability> abilities);
-    DataResult<List<Ability>> getAllByResumeId(int resumeId);
+    Result add(List<AbilityDto> abilityDtos);
+    DataResult<List<Ability>> getAllByResumeEmployeeId(int resumeId);
 }

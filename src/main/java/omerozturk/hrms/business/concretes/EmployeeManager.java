@@ -40,7 +40,7 @@ public class EmployeeManager implements EmployeeService {
     }
 
     @Override
-    public DataResult<Optional<Employee>> getById(int employeeId) {
-        return new SuccessDataResult<Optional<Employee>>(employeeDao.findById(employeeId),"Veri Listelendi");
+    public DataResult<Employee> getById(int employeeId) {
+        return new SuccessDataResult<Employee>(employeeDao.getById(employeeId),"Veri Listelendi");
     }
 }

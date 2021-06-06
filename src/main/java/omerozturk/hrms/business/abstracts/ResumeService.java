@@ -3,7 +3,7 @@ package omerozturk.hrms.business.abstracts;
 import omerozturk.hrms.core.utilities.result.DataResult;
 import omerozturk.hrms.core.utilities.result.Result;
 import omerozturk.hrms.entities.concretes.Resume;
-import omerozturk.hrms.entities.concretes.dtos.ResumeDto;
+import omerozturk.hrms.entities.dtos.ResumeDto;
 
 import java.util.List;
 

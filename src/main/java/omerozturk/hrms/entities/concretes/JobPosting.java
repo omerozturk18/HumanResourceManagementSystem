@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
 @Entity
@@ -32,10 +32,10 @@ public class JobPosting {
 	private int openPositionCount;
 
 	@Column(name = "application_deadline")
-	private Date applicationDeadline;
+	private LocalDate applicationDeadline;
 
 	@Column(name = "release_date")
-	private Date releaseDate;
+	private LocalDate releaseDate;
 
 	@Column(name = "status")
 	private boolean status;

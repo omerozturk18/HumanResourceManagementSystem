@@ -42,7 +42,7 @@ public class SystemUserManager implements SystemUserService {
     }
 
     @Override
-    public DataResult<Optional<SystemUser>> getById(int systemUserId) {
-        return new SuccessDataResult<Optional<SystemUser>>(systemUserDao.findById(systemUserId),"Veri Listelendi");
+    public DataResult<SystemUser> getById(int systemUserId) {
+        return new SuccessDataResult<SystemUser>(systemUserDao.getById(systemUserId),"Veri Listelendi");
     }
 }

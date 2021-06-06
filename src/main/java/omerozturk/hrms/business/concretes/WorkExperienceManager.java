@@ -7,7 +7,7 @@ import omerozturk.hrms.core.utilities.result.SuccessDataResult;
 import omerozturk.hrms.core.utilities.result.SuccessResult;
 import omerozturk.hrms.dataAccess.abstracts.WorkExperienceDao;
 import omerozturk.hrms.entities.concretes.WorkExperience;
-import omerozturk.hrms.entities.concretes.dtos.WorkExperienceDto;
+import omerozturk.hrms.entities.dtos.WorkExperienceDto;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

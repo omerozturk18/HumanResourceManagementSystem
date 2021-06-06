@@ -3,13 +3,12 @@ package omerozturk.hrms.business.abstracts;
 import omerozturk.hrms.core.utilities.result.DataResult;
 import omerozturk.hrms.core.utilities.result.Result;
 import omerozturk.hrms.entities.concretes.JobPosting;
-import omerozturk.hrms.entities.concretes.dtos.JobPostingDto;
+import omerozturk.hrms.entities.dtos.JobPostingDto;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface JobPostingService {
-	Result add(JobPosting jobPosting);
+	Result add(JobPostingDto jobPostingDto);
 	Result changeJobPostingStatus(int jobPostingId);
 	DataResult<JobPosting> getByJobPostingId(int jobPostingId);
 	DataResult<List<JobPosting>> getByActiveJobPostings();

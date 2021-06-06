@@ -1,18 +1,20 @@
 package omerozturk.hrms.business.concretes;
 
 import omerozturk.hrms.business.abstracts.AuthService;
-import omerozturk.hrms.core.Adapters.CustomerCheckService;
+import omerozturk.hrms.core.adapters.CustomerCheckService;
+import omerozturk.hrms.core.utilities.result.DataResult;
 import omerozturk.hrms.core.utilities.result.ErrorResult;
 import omerozturk.hrms.core.utilities.result.Result;
 import omerozturk.hrms.core.utilities.result.SuccessResult;
 import omerozturk.hrms.dataAccess.abstracts.EmployeeDao;
 import omerozturk.hrms.dataAccess.abstracts.EmployerDao;
-import omerozturk.hrms.dataAccess.abstracts.UserDao;
+import omerozturk.hrms.core.dataAccess.UserDao;
 import omerozturk.hrms.entities.concretes.Employee;
 import omerozturk.hrms.entities.concretes.Employer;
-import omerozturk.hrms.entities.concretes.User;
-import omerozturk.hrms.entities.concretes.dtos.EmployeeForRegisterDto;
-import omerozturk.hrms.entities.concretes.dtos.EmployerForRegisterDto;
+import omerozturk.hrms.core.entities.User;
+import omerozturk.hrms.entities.dtos.EmployeeForRegisterDto;
+import omerozturk.hrms.entities.dtos.EmployerForRegisterDto;
+import omerozturk.hrms.entities.dtos.UserForLoginDto;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -61,6 +63,16 @@ public class AuthManager implements AuthService {
         userDao.save(user);
         employerDao.save(employer);
         return new SuccessResult("Kayıt Başarılı");
+    }
+
+    @Override
+    public Result login(UserForLoginDto userForLoginDto) {
+       var users= userDao.findAll();
+        for (User user:users) {
+            if (user.getEmail().equals(userForLoginDto.getEmail())&&user.getPassword().equals(userForLoginDto.getPassword()))
+                return new SuccessResult("giriş başarılı");
+        }
+        return new ErrorResult("Kullanıcı Adı veya Şifre Hatalı");
     }
 
     private Result checkEmployee(Employee employee){

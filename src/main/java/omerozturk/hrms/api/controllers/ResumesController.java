@@ -2,7 +2,7 @@ package omerozturk.hrms.api.controllers;
 
 
 import omerozturk.hrms.business.abstracts.ResumeService;
-import omerozturk.hrms.entities.concretes.dtos.ResumeDto;
+import omerozturk.hrms.entities.dtos.ResumeDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

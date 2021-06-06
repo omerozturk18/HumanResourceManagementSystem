@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface AbilityDao extends JpaRepository<Ability,Integer> {
-    List<Ability> getAllByResumeId(int resumeId);
+    List<Ability> getAllByResumeEmployeeId(int resumeId);
 }

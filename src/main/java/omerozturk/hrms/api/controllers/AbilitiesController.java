@@ -1,7 +1,7 @@
 package omerozturk.hrms.api.controllers;
 
 import omerozturk.hrms.business.abstracts.AbilityService;
-import omerozturk.hrms.entities.concretes.Ability;
+import omerozturk.hrms.entities.dtos.AbilityDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,9 +19,9 @@ public class AbilitiesController {
         this.abilityService = abilityService;
     }
 
-    @GetMapping("/getAllByResumeId")
-    public ResponseEntity getAllByResumeId(int resumeId){
-        var result = abilityService.getAllByResumeId(resumeId);
+    @GetMapping("/getAllByResumeEmployeeId")
+    public ResponseEntity getAllByResumeEmployeeId(int employeeId){
+        var result = abilityService.getAllByResumeEmployeeId(employeeId);
         if (result.isSuccess()){
             return ResponseEntity.ok(result);
         }
@@ -29,8 +29,8 @@ public class AbilitiesController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity add(@RequestBody List<Ability> abilities) {
-        var result = abilityService.add(abilities);
+    public ResponseEntity add(@RequestBody List<AbilityDto> abilityDtos) {
+        var result = abilityService.add(abilityDtos);
         if(result.isSuccess()){
             return ResponseEntity.ok(result);
         }

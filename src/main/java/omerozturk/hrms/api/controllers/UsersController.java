@@ -3,8 +3,9 @@ package omerozturk.hrms.api.controllers;
 import omerozturk.hrms.business.abstracts.UserService;
 import omerozturk.hrms.core.utilities.result.DataResult;
 import omerozturk.hrms.core.utilities.result.Result;
-import omerozturk.hrms.entities.concretes.User;
+import omerozturk.hrms.core.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,18 +22,30 @@ public class UsersController {
     }
 
     @GetMapping("/getall")
-    public DataResult<List<User>> getAll(){
-       return userService.getAll();
+    public ResponseEntity getAll(){
+        var result= userService.getAll();
+        if (result.isSuccess()){
+            return ResponseEntity.ok(result);
+        }
+        return ResponseEntity.badRequest().body(result);
     }
 
 
     @PostMapping("/delete")
-    public Result delete(@RequestBody User user){
-        return userService.delete(user);
+    public ResponseEntity delete(@RequestBody User user){
+        var result= userService.delete(user);
+        if (result.isSuccess()){
+            return ResponseEntity.ok(result);
+        }
+        return ResponseEntity.badRequest().body(result);
     }
 
     @GetMapping("/getbyid")
-    public DataResult<Optional<User>> getById(int userId){
-        return userService.getById(userId);
+    public ResponseEntity getById(int userId){
+        var result= userService.getById(userId);
+        if (result.isSuccess()){
+            return ResponseEntity.ok(result);
+        }
+        return ResponseEntity.badRequest().body(result);
     }
 }

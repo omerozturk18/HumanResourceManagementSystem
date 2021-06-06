@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
 @Entity
@@ -21,8 +21,8 @@ public class WorkExperience {
     private int id;
     private String workPlaceName;
     private String jobPosition;
-    private Date dateOfStart;
-    private Date departureDate;
+    private LocalDate dateOfStart;
+    private LocalDate departureDate;
 
     @ManyToOne()
     @JoinColumn(name="resume_id")

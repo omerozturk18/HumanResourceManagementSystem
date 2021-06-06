@@ -7,7 +7,7 @@ import omerozturk.hrms.core.utilities.result.SuccessDataResult;
 import omerozturk.hrms.core.utilities.result.SuccessResult;
 import omerozturk.hrms.dataAccess.abstracts.SchoolDao;
 import omerozturk.hrms.entities.concretes.School;
-import omerozturk.hrms.entities.concretes.dtos.SchoolDto;
+import omerozturk.hrms.entities.dtos.SchoolDto;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

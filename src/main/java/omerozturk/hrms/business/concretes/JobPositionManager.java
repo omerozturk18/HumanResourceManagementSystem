@@ -42,8 +42,8 @@ public class JobPositionManager implements JobPositionService {
     }
 
     @Override
-    public DataResult<Optional<JobPosition>> getById(int jobPositionId) {
-        return new SuccessDataResult<Optional<JobPosition>>(jobPositionDao.findById(jobPositionId),"Veri Listelendi");
+    public DataResult<JobPosition> getById(int jobPositionId) {
+        return new SuccessDataResult<JobPosition>(jobPositionDao.getById(jobPositionId),"Veri Listelendi");
     }
 
     private Result checkJobPosition(JobPosition jobPosition)

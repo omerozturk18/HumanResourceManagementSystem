@@ -5,6 +5,7 @@ import omerozturk.hrms.core.utilities.result.DataResult;
 import omerozturk.hrms.core.utilities.result.Result;
 import omerozturk.hrms.entities.concretes.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,22 +22,38 @@ public class EmployeesController {
     }
 
     @GetMapping("/getall")
-    public DataResult<List<Employee>> getAll(){
-        return employeeService.getAll();
+    public ResponseEntity getAll(){
+        var result = employeeService.getAll();
+        if (result.isSuccess()){
+            return ResponseEntity.ok(result);
+        }
+        return ResponseEntity.badRequest().body(result);
     }
 
     @PostMapping("/add")
-    public Result add(@RequestBody Employee employee){
-        return employeeService.add(employee);
+    public ResponseEntity add(@RequestBody Employee employee){
+        var result = employeeService.add(employee);
+        if (result.isSuccess()){
+            return ResponseEntity.ok(result);
+        }
+        return ResponseEntity.badRequest().body(result);
     }
 
     @PostMapping("/delete")
-    public Result delete(@RequestBody Employee employee){
-        return employeeService.delete(employee);
+    public ResponseEntity delete(@RequestBody Employee employee){
+        var result = employeeService.delete(employee);
+        if (result.isSuccess()){
+            return ResponseEntity.ok(result);
+        }
+        return ResponseEntity.badRequest().body(result);
     }
 
     @GetMapping("/getbyid")
-    public DataResult<Optional<Employee>> getById(int employeeId){
-        return employeeService.getById(employeeId);
+    public ResponseEntity getById(int employeeId){
+        var result = employeeService.getById(employeeId);
+        if (result.isSuccess()){
+            return ResponseEntity.ok(result);
+        }
+        return ResponseEntity.badRequest().body(result);
     }
 }

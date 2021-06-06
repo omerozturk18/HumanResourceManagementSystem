@@ -40,7 +40,7 @@ public class EmployerManager implements EmployerService {
     }
 
     @Override
-    public DataResult<Optional<Employer>> getById(int employeeId) {
-        return new SuccessDataResult<Optional<Employer>>(employerDao.findById(employeeId),"Veri Listelendi");
+    public DataResult<Employer> getById(int employerId) {
+        return new SuccessDataResult<Employer>(employerDao.getById(employerId),"Veri Listelendi");
     }
 }

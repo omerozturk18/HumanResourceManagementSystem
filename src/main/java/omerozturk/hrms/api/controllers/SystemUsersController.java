@@ -5,6 +5,7 @@ import omerozturk.hrms.core.utilities.result.DataResult;
 import omerozturk.hrms.core.utilities.result.Result;
 import omerozturk.hrms.entities.concretes.SystemUser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,22 +22,38 @@ public class SystemUsersController {
     }
 
     @GetMapping("/getall")
-    public DataResult<List<SystemUser>> getAll(){
-        return systemUserService.getAll();
+    public ResponseEntity getAll(){
+        var result= systemUserService.getAll();
+        if (result.isSuccess()){
+            return ResponseEntity.ok(result);
+        }
+        return ResponseEntity.badRequest().body(result);
     }
 
     @PostMapping("/add")
-    public Result add(@RequestBody SystemUser systemUser){
-        return systemUserService.add(systemUser);
+    public ResponseEntity add(@RequestBody SystemUser systemUser){
+        var result= systemUserService.add(systemUser);
+        if (result.isSuccess()){
+            return ResponseEntity.ok(result);
+        }
+        return ResponseEntity.badRequest().body(result);
     }
 
     @PostMapping("/delete")
-    public Result delete(@RequestBody SystemUser systemUser){
-        return systemUserService.delete(systemUser);
+    public ResponseEntity delete(@RequestBody SystemUser systemUser){
+        var result= systemUserService.delete(systemUser);
+        if (result.isSuccess()){
+            return ResponseEntity.ok(result);
+        }
+        return ResponseEntity.badRequest().body(result);
     }
 
     @GetMapping("/getbyid")
-    public DataResult<Optional<SystemUser>> getById(int systemUserId){
-        return systemUserService.getById(systemUserId);
+    public ResponseEntity getById(int systemUserId){
+        var result= systemUserService.getById(systemUserId);
+        if (result.isSuccess()){
+            return ResponseEntity.ok(result);
+        }
+        return ResponseEntity.badRequest().body(result);
     }
 }

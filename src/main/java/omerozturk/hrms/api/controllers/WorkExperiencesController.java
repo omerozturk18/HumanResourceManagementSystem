@@ -1,7 +1,7 @@
 package omerozturk.hrms.api.controllers;
 
 import omerozturk.hrms.business.abstracts.WorkExperienceService;
-import omerozturk.hrms.entities.concretes.dtos.WorkExperienceDto;
+import omerozturk.hrms.entities.dtos.WorkExperienceDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

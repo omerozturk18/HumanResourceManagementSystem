@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
 @Entity
@@ -21,8 +21,8 @@ public class School {
     private int id;
     private String schoolName;
     private String sectionName;
-    private Date startingDate;
-    private Date dateOfGraduation;
+    private LocalDate startingDate;
+    private LocalDate dateOfGraduation;
 
     @ManyToOne()
     @JoinColumn(name="resume_id")

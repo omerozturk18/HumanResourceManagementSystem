@@ -6,6 +6,7 @@ import omerozturk.hrms.core.utilities.result.Result;
 import omerozturk.hrms.entities.concretes.JobPosition;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,22 +23,38 @@ public class JobPositionsController {
     }
 
     @GetMapping("/getall")
-    public DataResult<List<JobPosition>> getAll(){
-        return jobPositionService.getAll();
+    public ResponseEntity getAll(){
+        var result= jobPositionService.getAll();
+        if (result.isSuccess()){
+            return ResponseEntity.ok(result);
+        }
+        return ResponseEntity.badRequest().body(result);
     }
 
     @PostMapping("/add")
-    public Result add(@RequestBody JobPosition jobPosition){
-        return jobPositionService.add(jobPosition);
+    public ResponseEntity add(@RequestBody JobPosition jobPosition){
+        var result= jobPositionService.add(jobPosition);
+        if (result.isSuccess()){
+            return ResponseEntity.ok(result);
+        }
+        return ResponseEntity.badRequest().body(result);
     }
 
     @PostMapping("/delete")
-    public Result delete(@RequestBody JobPosition jobPosition){
-        return jobPositionService.delete(jobPosition);
+    public ResponseEntity delete(@RequestBody JobPosition jobPosition){
+        var result= jobPositionService.delete(jobPosition);
+        if (result.isSuccess()){
+            return ResponseEntity.ok(result);
+        }
+        return ResponseEntity.badRequest().body(result);
     }
 
     @GetMapping("/getbyid")
-    public DataResult<Optional<JobPosition>> getById(int jobPositionId){
-        return jobPositionService.getById(jobPositionId);
+    public ResponseEntity getById(int jobPositionId){
+        var result= jobPositionService.getById(jobPositionId);
+        if (result.isSuccess()){
+            return ResponseEntity.ok(result);
+        }
+        return ResponseEntity.badRequest().body(result);
     }
 }

@@ -4,8 +4,9 @@ import omerozturk.hrms.business.abstracts.JobPostingService;
 import omerozturk.hrms.core.utilities.result.DataResult;
 import omerozturk.hrms.core.utilities.result.Result;
 import omerozturk.hrms.entities.concretes.JobPosting;
-import omerozturk.hrms.entities.concretes.dtos.JobPostingDto;
+import omerozturk.hrms.entities.dtos.JobPostingDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,27 +22,47 @@ public class JobPostingsController {
     }
 
     @PostMapping("add")
-    public Result add(@RequestBody JobPosting jobPostingDto) {
-        return jobPostingService.add(jobPostingDto);
+    public ResponseEntity add(@RequestBody JobPostingDto jobPostingDto) {
+        var result= jobPostingService.add(jobPostingDto);
+        if (result.isSuccess()){
+            return ResponseEntity.ok(result);
+        }
+        return ResponseEntity.badRequest().body(result);
     }
 
     @PostMapping("changeStatus")
-    public Result changeStatus(@RequestParam int jobPostingId) {
-        return jobPostingService.changeJobPostingStatus(jobPostingId);
+    public ResponseEntity changeStatus(@RequestParam int jobPostingId) {
+        var result= jobPostingService.changeJobPostingStatus(jobPostingId);
+        if (result.isSuccess()){
+            return ResponseEntity.ok(result);
+        }
+        return ResponseEntity.badRequest().body(result);
     }
 
     @GetMapping("getByActive")
-    public Result getByActive() {
-        return jobPostingService.getByActiveJobPostings();
+    public ResponseEntity getByActive() {
+        var result= jobPostingService.getByActiveJobPostings();
+        if (result.isSuccess()){
+            return ResponseEntity.ok(result);
+        }
+        return ResponseEntity.badRequest().body(result);
     }
 
     @GetMapping("getByReleaseDate")
-    public DataResult<List<JobPosting>> getByReleaseDate(@RequestParam int value) {
-        return jobPostingService.getByReleaseDateJobPosting(value);
+    public ResponseEntity getByReleaseDate(@RequestParam int value) {
+        var result= jobPostingService.getByReleaseDateJobPosting(value);
+        if (result.isSuccess()){
+            return ResponseEntity.ok(result);
+        }
+        return ResponseEntity.badRequest().body(result);
     }
 
     @GetMapping("getByEmployer")
-    public DataResult<List<JobPosting>> getByEmployer(@RequestParam int employerId) {
-        return jobPostingService.getByEmployerJobPosting(employerId);
+    public ResponseEntity getByEmployer(@RequestParam int employerId) {
+        var result= jobPostingService.getByEmployerJobPosting(employerId);
+        if (result.isSuccess()){
+            return ResponseEntity.ok(result);
+        }
+        return ResponseEntity.badRequest().body(result);
     }
 }

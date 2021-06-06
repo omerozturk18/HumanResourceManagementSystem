@@ -1,10 +1,13 @@
 package omerozturk.hrms.api.controllers;
 
 import omerozturk.hrms.business.abstracts.EmployeeImageService;
+import omerozturk.hrms.entities.concretes.Employee;
 import omerozturk.hrms.entities.concretes.EmployeeImage;
+import omerozturk.hrms.entities.dtos.EmployeeImageDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 
 @RestController
@@ -17,10 +20,18 @@ public class EmployeeImagesController {
         this.employeeImageService = employeeImageService;
     }
 
-    @PostMapping("/add")
-    public ResponseEntity add(@RequestBody EmployeeImage employeeImage) {
-        var result = employeeImageService.add(employeeImage);
+    @PostMapping("/addToUrlImage")
+    public ResponseEntity addToUrlImage(@RequestBody EmployeeImageDto employeeImageDto) {
+        var result = employeeImageService.addToUrlImage(employeeImageDto);
         if(result.isSuccess()){
+            return ResponseEntity.ok(result);
+        }
+        return ResponseEntity.badRequest().body(result);
+    }
+    @PostMapping("/add")
+    public ResponseEntity add(@RequestBody MultipartFile file, @RequestParam int employeeId){
+        var result =  employeeImageService.addPhoto(employeeId,file);
+        if (result.isSuccess()){
             return ResponseEntity.ok(result);
         }
         return ResponseEntity.badRequest().body(result);

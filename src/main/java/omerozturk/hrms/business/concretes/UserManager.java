@@ -2,8 +2,8 @@ package omerozturk.hrms.business.concretes;
 
 import omerozturk.hrms.business.abstracts.UserService;
 import omerozturk.hrms.core.utilities.result.*;
-import omerozturk.hrms.dataAccess.abstracts.UserDao;
-import omerozturk.hrms.entities.concretes.User;
+import omerozturk.hrms.core.dataAccess.UserDao;
+import omerozturk.hrms.core.entities.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,7 +32,7 @@ public class UserManager implements UserService {
     }
 
     @Override
-    public DataResult<Optional<User>> getById(int userId) {
-        return new SuccessDataResult<Optional<User>>(userDao.findById(userId),"Veri Listelendi");
+    public DataResult<User> getById(int userId) {
+        return new SuccessDataResult<User>(userDao.getById(userId),"Veri Listelendi");
     }
 }

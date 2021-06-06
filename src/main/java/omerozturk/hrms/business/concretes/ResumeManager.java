@@ -8,7 +8,7 @@ import omerozturk.hrms.core.utilities.result.SuccessResult;
 import omerozturk.hrms.dataAccess.abstracts.ResumeDao;
 import omerozturk.hrms.entities.concretes.Employee;
 import omerozturk.hrms.entities.concretes.Resume;
-import omerozturk.hrms.entities.concretes.dtos.ResumeDto;
+import omerozturk.hrms.entities.dtos.ResumeDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
