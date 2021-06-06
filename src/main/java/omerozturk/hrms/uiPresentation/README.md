@@ -1,5 +1,5 @@
 
-<img src="/src/uml.png">
+<img src="https://github.com/omerozturk18/HumanResourceManagementSystem/blob/master/src/main/java/omerozturk/hrms/uiPresentation/src/uml.png">
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
