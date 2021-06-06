@@ -43,10 +43,9 @@ public class AuthManager implements AuthService {
         var controlUser=checkUser(user);
         var controlPassword=checkPassword(employeeDto.getPassword(),employeeDto.getVerifyPassword());
         var controlEmployee= checkEmployee(employee);
-        if (!checkUser(user).isSuccess()) return new ErrorResult(controlUser.getMessage());
+        if (!controlUser.isSuccess()) return new ErrorResult(controlUser.getMessage());
         if (!controlPassword.isSuccess()) return new ErrorResult(controlPassword.getMessage());
-        if (!checkEmployee(employee).isSuccess()) return new ErrorResult(controlEmployee.getMessage());
-        userDao.save(user);
+        if (!controlEmployee.isSuccess()) return new ErrorResult(controlEmployee.getMessage());
         employeeDao.save(employee);
         return new SuccessResult(" Kimlik Doğrulama Başarılı, Kayıt Başarılı");
     }
@@ -60,7 +59,6 @@ public class AuthManager implements AuthService {
         if (!controlUser.isSuccess()) return new ErrorResult(controlUser.getMessage());
         if (!controlPassword.isSuccess()) return new ErrorResult(controlPassword.getMessage());
         if (!controlEmployer.isSuccess()) return new ErrorResult(controlEmployer.getMessage());
-        userDao.save(user);
         employerDao.save(employer);
         return new SuccessResult("Kayıt Başarılı");
     }

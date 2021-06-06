@@ -31,5 +31,5 @@ public class User {
     private boolean emailVerified;
 
     @Column(name="Status")
-    private boolean status;
+    private boolean status=true;
 }

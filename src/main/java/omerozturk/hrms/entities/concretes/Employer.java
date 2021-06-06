@@ -1,10 +1,10 @@
 package omerozturk.hrms.entities.concretes;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import omerozturk.hrms.core.entities.User;
 
 import javax.persistence.*;
 import java.util.List;
@@ -15,12 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobPostings"})
-public class Employer {
-    @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
-    @Column(name="Id")
-    private int id;
-
+public class Employer extends User {
     @Column(name="CompanyName")
     private String companyName;
 
@@ -33,10 +28,7 @@ public class Employer {
     @Column(name="VerifedBySystem")
     private boolean verifedBySystem=false;
 
-    @Column(name="Status")
-    private boolean status=true;
     
-     @OneToMany(mappedBy = "employer")
-     @JsonIgnore
+    @OneToMany(mappedBy = "employer")
     private List<JobPosting> jobPostings;
 }
