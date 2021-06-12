@@ -3,6 +3,8 @@ package omerozturk.hrms.entities.concretes;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import omerozturk.hrms.entities.enums.PlaceOfWorking;
+import omerozturk.hrms.entities.enums.WayOfWorking;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -19,26 +21,35 @@ public class JobPosting {
 	@Column(name = "id")
 	private int id;
 
-	@Column(name = "job_description")
+	@Column(name = "jobDescription")
 	private String jobDescription;
 
-	@Column(name = "min_salary")
+	@Column(name = "minSalary")
 	private double minSalary;
 
-	@Column(name = "max_salary")
+	@Column(name = "maxSalary")
 	private double maxSalary;
 
-	@Column(name = "open_position_count")
+	@Column(name = "openPositionCount")
 	private int openPositionCount;
 
-	@Column(name = "application_deadline")
+	@Column(name = "applicationDeadline")
 	private LocalDate applicationDeadline;
 
-	@Column(name = "release_date")
+	@Column(name = "releaseDate")
 	private LocalDate releaseDate;
+
+	@Column(name="wayOfWorking")
+	private WayOfWorking wayOfWorking;
+
+	@Column(name="placeOfWorking")
+	private PlaceOfWorking placeOfWorking;
 
 	@Column(name = "status")
 	private boolean status;
+
+	@Column(name="verifiedBySystem")
+	private boolean verifiedBySystem;
 
 	@ManyToOne()
 	@JoinColumn(name = "employer_id")
