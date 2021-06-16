@@ -1,5 +1,5 @@
 import React from 'react'
-import Navbar from "components/Navbars/AuthNavbar.js";
+import Navbar from "components/Navbars/IndexNavbar";
 import Footer from "components/Footers/Footer.js";
 import EmployeeEdit from './EmployeeEdit';
 import EmployeeDetail from './EmployeeDetail';
@@ -48,7 +48,7 @@ export default function Employee() {
                         <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64">
                             <div className="px-6">
                                  <EmployeeDetail/> 
-                                {/*<EmployeeEdit/>*/}
+                                <EmployeeEdit/>
                             </div>
                         </div>
                     </div>

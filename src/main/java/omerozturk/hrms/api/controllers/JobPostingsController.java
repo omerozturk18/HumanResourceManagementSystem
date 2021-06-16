@@ -66,4 +66,12 @@ public class JobPostingsController {
         }
         return ResponseEntity.badRequest().body(result);
     }
+    @GetMapping("getByJobPostingId")
+    public ResponseEntity getByJobPostingId(@RequestParam int jobPostingId) {
+        var result= jobPostingService.getByJobPostingId(jobPostingId);
+        if (result.isSuccess()){
+            return ResponseEntity.ok(result);
+        }
+        return ResponseEntity.badRequest().body(result);
+    }
 }

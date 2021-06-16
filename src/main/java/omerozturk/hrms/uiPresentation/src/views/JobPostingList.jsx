@@ -82,7 +82,7 @@ export default function JobPostingList({ color }) {
                     </div>
                     <div className="text-amber-600 bg-amber-200 p-2 text-center inline-flex items-center justify-center   shadow-lg rounded-full bg-white mr-4">
                       <span className="fas fa-place-of-worship mr-2 text-md "> 
-                      { EnumPlaceOfWorking[jobPostging.placeOfWorking] }
+                      {  EnumPlaceOfWorking[jobPostging.placeOfWorking] }
                       </span>
                     </div>
                     <button

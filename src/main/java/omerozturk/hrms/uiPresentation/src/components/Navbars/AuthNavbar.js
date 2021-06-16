@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 // components
 
 import PagesDropdown from "components/Dropdowns/PagesDropdown.js";
+import UserDropdown from "components/Dropdowns/UserDropdown";
 
 export default function Navbar(props) {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
@@ -81,17 +82,10 @@ export default function Navbar(props) {
                   <span className="lg:hidden inline-block ml-2">Star</span>
                 </a>
               </li>
-
-              <li className="flex items-center">
-                <button
-                  className="bg-white text-blueGray-700 active:bg-blueGray-50 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
-                  type="button"
-                >
-                  <i className="fas fa-arrow-alt-circle-down"></i> Download
-                </button>
-              </li>
             </ul>
           </div>
+          <UserDropdown/>
+
         </div>
       </nav>
     </>

@@ -19,6 +19,7 @@ import JobPostingList from "views/JobPostingList";
 import EmployeeDetail from "views/Employee/EmployeeDetail";
 import EmployeeEdit from "views/Employee/EmployeeEdit";
 import Employee from "views/Employee/Employee";
+import JobPostingEdit from "views/JobPostingEdit";
 import JobPostingDetail from "views/JobPostingDetail";
 
 ReactDOM.render(
@@ -32,7 +33,9 @@ ReactDOM.render(
       <Route path="/profile" exact component={Profile} />
       <Route path="/" exact component={Index} />
       <Route path="/jobPostingList" component={JobPostingList}/>
+      <Route path="/jobPostingEdit" component={JobPostingEdit}/>
       <Route path="/jobPostingDetail" component={JobPostingDetail}/>
+
 
       <Route path="/employeeDetail/:empoleeId" component={EmployeeDetail}/>
       <Route path="/employeeEdit/:empoleeId" component={EmployeeEdit}/>

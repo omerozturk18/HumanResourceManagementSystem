@@ -1,6 +1,10 @@
 /*eslint-disable*/
-import React from "react";
+import React, { useState }  from 'react'
 import { Link } from "react-router-dom";
+import SignedIn from './SignedIn'
+import SignedOut from './SignedOut'
+import { useHistory } from 'react-router'
+
 // components
 
 import IndexDropdown from "components/Dropdowns/IndexDropdown.js";
@@ -8,6 +12,16 @@ import UserDropdown from "components/Dropdowns/UserDropdown";
 
 export default function Navbar(props) {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const history= useHistory()
+  function handleSingleOut() {
+      setIsAuthenticated(false)
+      history.push("/")
+  }
+  function handleSingleIn() {
+      setIsAuthenticated(true)
+  }
+
   return (
     <>
       <nav className="top-0 fixed z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg bg-white shadow">
@@ -81,19 +95,10 @@ export default function Navbar(props) {
                   <span className="lg:hidden inline-block ml-2">Star</span>
                 </a>
               </li>
-
-              <li className="flex items-center">
-                <button
-                  className="bg-lightBlue-500 text-white active:bg-lightBlue-600 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
-                  type="button"
-                >
-                  <i className="fas fa-arrow-alt-circle-down"></i> Download
-                </button>
-              </li>
             </ul>
           </div>
           <ul className="flex-col md:flex-row list-none items-center hidden md:flex">
-            <UserDropdown />
+          {isAuthenticated?<SignedIn signOut={handleSingleOut}/>:<SignedOut signIn={handleSingleIn}/>}
           </ul>
         </div>
       </nav>
