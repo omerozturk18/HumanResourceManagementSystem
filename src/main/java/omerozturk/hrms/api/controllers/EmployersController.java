@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -52,6 +53,22 @@ public class EmployersController {
     @GetMapping("/getbyid")
     public ResponseEntity getById(int employeeId){
         var result =  employerService.getById(employeeId);
+        if (result.isSuccess()){
+            return ResponseEntity.ok(result);
+        }
+        return ResponseEntity.badRequest().body(result);
+    }
+    @PostMapping("/systemUpdate")
+    public ResponseEntity systemUpdate(@RequestBody int employerId) throws IOException {
+        var result =  employerService.systemUpdate(employerId);
+        if (result.isSuccess()){
+            return ResponseEntity.ok(result);
+        }
+        return ResponseEntity.badRequest().body(result);
+    }
+    @PostMapping("/update")
+    public ResponseEntity update(@RequestBody Employer employer) throws IOException {
+        var result =  employerService.update(employer);
         if (result.isSuccess()){
             return ResponseEntity.ok(result);
         }

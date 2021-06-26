@@ -28,6 +28,14 @@ public class WorkExperiencesController {
         }
         return ResponseEntity.badRequest().body(result);
     }
+    @PostMapping("/update")
+    public ResponseEntity update(@RequestBody List<WorkExperienceDto> workExperienceDtos) {
+        var result = workExperienceService.update(workExperienceDtos);
+        if(result.isSuccess()){
+            return ResponseEntity.ok(result);
+        }
+        return ResponseEntity.badRequest().body(result);
+    }
 
     @GetMapping("/getAllByBusinessDate")
     public ResponseEntity getAllByBusinessDate(int employeeId){

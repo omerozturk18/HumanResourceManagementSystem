@@ -35,6 +35,15 @@ public class SchoolManager implements SchoolService {
         schoolDao.saveAll(schools);
         return new SuccessResult();
     }
+    @Override
+    public Result update(List<SchoolDto> schoolDtos) {
+        List<School> schools = new ArrayList<School>();
+        for (SchoolDto schoolDto : schoolDtos){
+            schools.add(modelMapper.map(schoolDto,School.class));
+        }
+        schoolDao.saveAll(schools);
+        return new SuccessResult();
+    }
 
     @Override
     public DataResult<List<School>> getAllByEmployeeOrderByDateOfGraduation(int employeeId) {

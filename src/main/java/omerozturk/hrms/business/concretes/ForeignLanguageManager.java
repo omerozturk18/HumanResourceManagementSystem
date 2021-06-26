@@ -35,6 +35,15 @@ public class ForeignLanguageManager implements ForeignLanguageService {
         foreignLanguageDao.saveAll(foreignLanguages);
         return new SuccessResult();
     }
+    @Override
+    public Result update(List<ForeignLanguageDto> foreignLanguageDtos) {
+        List<ForeignLanguage> foreignLanguages = new ArrayList<ForeignLanguage>();
+        for (ForeignLanguageDto foreignLanguageDto : foreignLanguageDtos){
+            foreignLanguages.add(modelMapper.map(foreignLanguageDto,ForeignLanguage.class));
+        }
+        foreignLanguageDao.saveAll(foreignLanguages);
+        return new SuccessResult();
+    }
 
     @Override
     public DataResult<List<ForeignLanguage>> getAll() {

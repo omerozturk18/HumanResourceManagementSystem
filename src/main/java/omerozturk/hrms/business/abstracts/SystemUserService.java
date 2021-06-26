@@ -10,6 +10,7 @@ import java.util.Optional;
 public interface SystemUserService {
     DataResult<List<SystemUser>> getAll();
     Result add(SystemUser systemUser);
+    Result update(SystemUser systemUser);
     Result delete(SystemUser systemUser);
     DataResult<SystemUser> getById(int systemUserId);
 }

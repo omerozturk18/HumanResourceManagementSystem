@@ -25,8 +25,11 @@ public class Employer extends User {
     @Column(name="PhoneNumber")
     private String phoneNumber;
 
-    @Column(name="VerifedBySystem")
-    private boolean verifedBySystem=false;
+    @Column(name="VerifiedBySystem")
+    private boolean verifiedBySystem =false;
+
+    @Column(name="UpdateVerifiedBySystem")
+    private boolean updateVerifiedBySystem =true;
 
     
     @OneToMany(mappedBy = "employer")

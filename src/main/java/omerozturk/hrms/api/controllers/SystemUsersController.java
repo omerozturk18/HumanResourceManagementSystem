@@ -39,6 +39,14 @@ public class SystemUsersController {
         }
         return ResponseEntity.badRequest().body(result);
     }
+    @PostMapping("/update")
+    public ResponseEntity update(@RequestBody SystemUser systemUser){
+        var result= systemUserService.update(systemUser);
+        if (result.isSuccess()){
+            return ResponseEntity.ok(result);
+        }
+        return ResponseEntity.badRequest().body(result);
+    }
 
     @PostMapping("/delete")
     public ResponseEntity delete(@RequestBody SystemUser systemUser){

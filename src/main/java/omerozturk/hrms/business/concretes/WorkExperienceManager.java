@@ -1,6 +1,7 @@
 package omerozturk.hrms.business.concretes;
 
 import omerozturk.hrms.business.abstracts.WorkExperienceService;
+import omerozturk.hrms.core.entities.User;
 import omerozturk.hrms.core.utilities.result.DataResult;
 import omerozturk.hrms.core.utilities.result.Result;
 import omerozturk.hrms.core.utilities.result.SuccessDataResult;
@@ -29,6 +30,15 @@ public class WorkExperienceManager implements WorkExperienceService {
 
     @Override
     public Result add(List<WorkExperienceDto> workExperienceDtos) {
+        List<WorkExperience> workExperiences = new ArrayList<WorkExperience>();
+        for (WorkExperienceDto workExperienceDto : workExperienceDtos){
+            workExperiences.add(modelMapper.map(workExperienceDto,WorkExperience.class));
+        }
+        workExperienceDao.saveAll(workExperiences);
+        return new SuccessResult();
+    }
+    @Override
+    public Result update(List<WorkExperienceDto> workExperienceDtos) {
         List<WorkExperience> workExperiences = new ArrayList<WorkExperience>();
         for (WorkExperienceDto workExperienceDto : workExperienceDtos){
             workExperiences.add(modelMapper.map(workExperienceDto,WorkExperience.class));

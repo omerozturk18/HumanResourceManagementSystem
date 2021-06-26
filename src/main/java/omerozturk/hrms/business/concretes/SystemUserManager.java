@@ -34,6 +34,11 @@ public class SystemUserManager implements SystemUserService {
         systemUserDao.save(systemUser);
         return new SuccessResult("Kullanıcı Eklendi");
     }
+    @Override
+    public Result update(SystemUser systemUser) {
+        systemUserDao.save(systemUser);
+        return new SuccessResult("Kullanıcı Eklendi");
+    }
 
     @Override
     public Result delete(SystemUser systemUser) {

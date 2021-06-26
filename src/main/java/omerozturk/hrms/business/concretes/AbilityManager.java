@@ -35,6 +35,15 @@ public class AbilityManager implements AbilityService {
         this.abilityDao.saveAll(abilities);
         return new SuccessResult();
     }
+    @Override
+    public Result update(List<AbilityDto> abilityDtos) {
+        List<Ability> abilities  = new ArrayList<Ability>();
+        for (AbilityDto abilityDto : abilityDtos){
+            abilities.add(modelMapper.map(abilityDto,Ability.class));
+        }
+        this.abilityDao.saveAll(abilities);
+        return new SuccessResult();
+    }
 
     @Override
     public DataResult<List<Ability>> getAllByResumeEmployeeId(int employeeId) {
