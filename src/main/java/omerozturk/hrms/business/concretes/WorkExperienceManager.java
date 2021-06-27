@@ -48,8 +48,8 @@ public class WorkExperienceManager implements WorkExperienceService {
     }
 
     @Override
-    public DataResult<List<WorkExperience>> getByBusinessDate(int employeeId) {
-        return new SuccessDataResult<List<WorkExperience>>(workExperienceDao.getByBusinessDate(employeeId));
+    public DataResult<List<WorkExperience>> getByBusinessDate(int resumeId) {
+        return new SuccessDataResult<List<WorkExperience>>(workExperienceDao.getAllByResumeIdOrderByDateOfStartDesc(resumeId));
 
     }
 }

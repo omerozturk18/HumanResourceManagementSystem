@@ -11,5 +11,5 @@ public interface ForeignLanguageService {
     Result add(List<ForeignLanguageDto> foreignLanguage);
     Result update(List<ForeignLanguageDto> foreignLanguage);
     DataResult<List<ForeignLanguage>> getAll();
-    DataResult<List<ForeignLanguage>> getAllByEmployeeId(int employeeId);
+    DataResult<List<ForeignLanguage>> getAllByResumeId(int employeeId);
 }

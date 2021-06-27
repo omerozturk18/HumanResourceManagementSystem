@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from 'react'
 import CityService from 'services/systemServices/cityService';
+import { useDispatch } from 'react-redux';
+import {cityFilter} from '../store/actions/jobFilterCityActions'
 
 export default function City() {
-
+    const dispatch = useDispatch()
     const [cities, setCities] = useState([])
 
     useEffect(() => {
         let cityService = new CityService();
         cityService.getCities().then(result => setCities(result.data.data))
     }, [])
-
+    const filterCity = (city) => {
+        dispatch(cityFilter(city));
+      };
     return (
         <>
             <div className=" w-full px-4 text-start">
@@ -34,7 +38,7 @@ export default function City() {
                         <div className="max-h-250-px overflow-y-auto mx-4" >
                             {cities.map(city => (
                                 <div key={city.id}>
-                                    <label className="flex items-start cursor-pointer" onClick={() => console.log(city.id)}>
+                                    <label className="flex items-start cursor-pointer" onClick={() => filterCity(city)}>
                                         <input
                                             id="customCheckLogin"
                                             type="checkbox"

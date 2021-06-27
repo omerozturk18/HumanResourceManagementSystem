@@ -11,4 +11,5 @@ public interface SchoolService {
     Result add(List<SchoolDto> schoolDtos);
     Result update(List<SchoolDto> schoolDtos);
     DataResult<List<School>> getAllByEmployeeOrderByDateOfGraduation(int employeeId);
+    DataResult<List<School>> getAllByResumeId(int resumeId);
 }

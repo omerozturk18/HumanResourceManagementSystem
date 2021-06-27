@@ -10,6 +10,7 @@ import java.util.List;
 public interface ResumeService {
     Result add(ResumeDto resumeDto);
     DataResult<List<Resume>> getAll();
-    DataResult<Resume> getByEmployeeForResume(int employeeId);
+    DataResult<Resume> getById(int resumeId);
     Result update(ResumeDto resumeDto);
+    DataResult<Resume> getByEmployeeIdAndDate(int employeeId);
 }

@@ -37,9 +37,9 @@ public class ForeignLanguagesController {
         }
         return ResponseEntity.badRequest().body(result);
     }
-    @GetMapping("/getAllByEmployeeId")
-    public ResponseEntity getAllByEmployeeId(int employeeId){
-        var result = foreignLanguageService.getAllByEmployeeId(employeeId);
+    @GetMapping("/getAllByResumeId")
+    public ResponseEntity getAllByResumeId(int resumeId){
+        var result = foreignLanguageService.getAllByResumeId(resumeId);
         if (result.isSuccess()){
             return ResponseEntity.ok(result);
         }

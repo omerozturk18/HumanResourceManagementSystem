@@ -41,6 +41,7 @@ public class EmployeeManager implements EmployeeService {
 
     @Override
     public DataResult<Employee> getById(int employeeId) {
+
         return new SuccessDataResult<Employee>(employeeDao.getById(employeeId),"Veri Listelendi");
     }
 }

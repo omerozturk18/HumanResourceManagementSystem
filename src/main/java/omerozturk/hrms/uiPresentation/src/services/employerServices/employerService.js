@@ -5,7 +5,7 @@ export default class EmployerService {
         return axios.get("http://localhost:8080/api/employers/getall" );
     }
     getByEmployerId(id) {
-        return axios.get("http://localhost:8080/api/employers/getbyid?employeeId=" + id);
+        return axios.get("http://localhost:8080/api/employers/getbyid?employerId=" + id);
     }
 
 }

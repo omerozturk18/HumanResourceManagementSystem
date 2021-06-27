@@ -1,15 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import JobPositionService from 'services/systemServices/jobPositionService';
+import { useDispatch } from 'react-redux';
+import {positionFilter} from '../store/actions/jobFilterPositionActions'
 
 export default function JobPosition() {
-
+    const dispatch = useDispatch()
     const [positions, setPositions] = useState([])
 
     useEffect(() => {
         let positionService = new JobPositionService();
         positionService.getAll().then(result => setPositions(result.data.data))
     }, [])
-
+    
+    const filterPosition = (position) => {
+        dispatch(positionFilter(position));
+      };
     return (
         <>
             <div className=" w-full px-4 text-start">
@@ -34,7 +39,7 @@ export default function JobPosition() {
                         <div className="max-h-250-px overflow-y-auto mx-4" >
                             {positions.map(position => (
                                 <div key={position.id}>
-                                    <label className="inline-flex items-center cursor-pointer">
+                                    <label className="inline-flex items-center cursor-pointer" onClick={() => filterPosition(position)}>
                                         <input
                                             id="customCheckLogin"
                                             type="checkbox"

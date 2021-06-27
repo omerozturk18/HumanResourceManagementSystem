@@ -52,9 +52,17 @@ public class ResumesController {
         return ResponseEntity.badRequest().body(result);
     }
 
-    @GetMapping("/getByEmployeeForResume")
-    public ResponseEntity getByEmployeeForResume(int employeeId){
-        var result = resumeService.getByEmployeeForResume(employeeId);
+    @GetMapping("/getById")
+    public ResponseEntity getById(int resumeId){
+        var result = resumeService.getById(resumeId);
+        if (result.isSuccess()){
+            return ResponseEntity.ok(result);
+        }
+        return ResponseEntity.badRequest().body(result);
+    }
+    @GetMapping("/getByEmployeeIdAndDate")
+    public ResponseEntity getByEmployeeIdAndDate(int employeeId){
+        var result = resumeService.getByEmployeeIdAndDate(employeeId);
         if (result.isSuccess()){
             return ResponseEntity.ok(result);
         }

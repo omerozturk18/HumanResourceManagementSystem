@@ -49,4 +49,8 @@ public class SchoolManager implements SchoolService {
     public DataResult<List<School>> getAllByEmployeeOrderByDateOfGraduation(int employeeId) {
         return new SuccessDataResult<List<School>>(schoolDao.findByOrderByDateOfGraduationDesc(employeeId));
     }
+    @Override
+    public DataResult<List<School>> getAllByResumeId(int resumeId) {
+        return new SuccessDataResult<List<School>>(schoolDao.getAllByResumeIdOrderByDateOfGraduationDesc(resumeId));
+    }
 }

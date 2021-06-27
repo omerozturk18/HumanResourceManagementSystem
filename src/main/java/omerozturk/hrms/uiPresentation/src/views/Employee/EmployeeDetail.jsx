@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react'
 import EmployeeService from 'services/employeeServices/employeeService';
 
 export default function EmployeeDetail() {
-  const [employee, setByEmployeeId] = useState([]);
+  const [employee, setEmployee] = useState([]);
 
   useEffect(() => {
-    let employeeService = new EmployeeService()
-    employeeService.getByEmployeeId(1).then(result => setByEmployeeId(result.data.data))
-  }, [])
+    let employeeService = new EmployeeService();
+    employeeService.getByEmployeeId(1).then(result => setEmployee(result.data.data));
+  }, []);
 
   return (
     <>
@@ -52,7 +52,7 @@ export default function EmployeeDetail() {
           {
             employee.resumes != null ? employee.resumes.map(resume => (
               resume.workExperiences.map(workExperience => (
-                <div className="mb-1">
+                <div className="mb-1" key={workExperience.id}>
                   <i className="fas fa-briefcase mr-2 text-lg text-blueGray-400"></i>
                   {workExperience.jobPosition}-{workExperience.workPlaceName}     {workExperience.dateOfStart}
                 </div>
@@ -64,7 +64,7 @@ export default function EmployeeDetail() {
           {
             employee.resumes != null ? employee.resumes.map(resume => (
               resume.schools.map(school => (
-                <div className="mb-1">
+                <div className="mb-1" key={school.id}>
                   <i className="fas fa-university mr-2 text-lg text-blueGray-400"></i>
                   {school.schoolName}-{school.sectionName}     {school.startingDate}
                 </div>
@@ -88,6 +88,8 @@ export default function EmployeeDetail() {
                       </a>
           </div>
         </div>
+        <button className=" bg-green text-white active:bg-pink-600 font-bold uppercase text-xs px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                                type="button" ><i className="fas fa-save"></i>  Düzenle</button>
       </div>
 
     </>

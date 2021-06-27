@@ -10,5 +10,5 @@ import java.util.List;
 public interface WorkExperienceService {
     Result add (List<WorkExperienceDto> workExperienceDtos);
     Result update (List<WorkExperienceDto> workExperienceDtos);
-    DataResult<List<WorkExperience>> getByBusinessDate(int employeeId);
+    DataResult<List<WorkExperience>> getByBusinessDate(int resumeId);
 }

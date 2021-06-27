@@ -38,4 +38,12 @@ public class SchoolController {
         }
         return ResponseEntity.badRequest().body(result);
     }
+    @GetMapping("/getAllByResumeId")
+    public ResponseEntity getAllByResumeId(int resumeId){
+        var result = schoolService.getAllByResumeId(resumeId);
+        if (result.isSuccess()){
+            return ResponseEntity.ok(result);
+        }
+        return ResponseEntity.badRequest().body(result);
+    }
 }

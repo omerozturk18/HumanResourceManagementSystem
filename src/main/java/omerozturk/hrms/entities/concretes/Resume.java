@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.List;
 
 @Data
@@ -23,6 +24,7 @@ public class Resume {
     private String description;
     private String githubAddress;
     private String linkedinAddress;
+    private LocalDate dateOfResume;
     private boolean status;
 
     @OneToMany(mappedBy = "resume")

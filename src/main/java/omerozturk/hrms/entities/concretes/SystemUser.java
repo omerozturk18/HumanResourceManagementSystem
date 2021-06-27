@@ -13,6 +13,13 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SystemUser extends User {
+
+    @Column(name="firstName")
+    private String firstName;
+
+    @Column(name="lastName")
+    private String lastName;
+
     @Column(name="Roles")
     private String roles;
 }

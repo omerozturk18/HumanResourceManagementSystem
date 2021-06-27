@@ -1,7 +1,13 @@
 import { EnumWayOfWorking } from 'enums/EnumWayOfWorking'
 import React from 'react'
+import { useDispatch } from 'react-redux';
+import { wayOfWorkingFilter } from 'store/actions/jobFilterWayOfWorkingActions';
 
 export default function WayOfWorking() {
+    const dispatch = useDispatch()
+    const filterWayOfWorking = (wayOfWorking) => {
+        dispatch(wayOfWorkingFilter(wayOfWorking));
+      };
     return (
         <div className=" w-full px-4 text-start">
                 <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
@@ -23,16 +29,16 @@ export default function WayOfWorking() {
                             </div>
                         </form>
                         <div className="max-h-250-px overflow-y-auto mx-4" >
-                            {Object.values(EnumWayOfWorking).map(wayOfWorking => (
-                                <div key={wayOfWorking.key}>
-                                    <label className="inline-flex items-center cursor-pointer">
+                            {Object.keys(EnumWayOfWorking).map(wayOfWorking => (
+                                <div key={wayOfWorking}>
+                                    <label className="inline-flex items-center cursor-pointer" onClick={() => filterWayOfWorking(wayOfWorking)}>
                                         <input
                                             id="customCheckLogin"
                                             type="checkbox"
                                             className="form-checkbox rounded text-blueGray-700 ml-1 mr-3 border-blueGray-400 w-4 h-4 ease-linear transition-all duration-150"
                                         />
                                         <p className="text-blueGray-500 text-sm leading-relaxed">
-                                            {wayOfWorking}
+                                            {EnumWayOfWorking[wayOfWorking]}
                                         </p>
                                     </label>
                                 </div>

@@ -52,7 +52,12 @@ public class ResumeManager implements ResumeService {
     }
 
     @Override
-    public DataResult<Resume> getByEmployeeForResume(int employeeId) {
-        return new SuccessDataResult<Resume>(this.resumeDao.getResumeByEmployeeId(employeeId));
+    public DataResult<Resume> getById(int resumeId) {
+        return new SuccessDataResult<Resume>(this.resumeDao.getById(resumeId));
+    }
+    @Override
+    public DataResult<Resume> getByEmployeeIdAndDate(int employeeId) {
+        List<Resume> resumes=resumeDao.getAllByEmployeeIdOrderByDateOfResumeDesc(employeeId);
+        return new SuccessDataResult<Resume>(resumes.get(0));
     }
 }

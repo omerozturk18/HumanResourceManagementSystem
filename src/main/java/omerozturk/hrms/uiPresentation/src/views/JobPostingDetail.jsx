@@ -10,7 +10,7 @@ export default function JobPostingDetail() {
     }, [])
     return (
         <div>
-         
+         {console.log(jobPosting)}
         </div>
     )
 }

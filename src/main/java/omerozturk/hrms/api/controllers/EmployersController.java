@@ -51,8 +51,8 @@ public class EmployersController {
     }
 
     @GetMapping("/getbyid")
-    public ResponseEntity getById(int employeeId){
-        var result =  employerService.getById(employeeId);
+    public ResponseEntity getById(int employerId){
+        var result =  employerService.getById(employerId);
         if (result.isSuccess()){
             return ResponseEntity.ok(result);
         }

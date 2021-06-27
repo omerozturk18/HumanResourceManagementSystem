@@ -5,11 +5,14 @@ import { Link } from "react-router-dom";
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import Footer from "components/Footers/Footer.js";
 import JobPostingList from "./JobPostingList";
+import SystemUser from "./SystemUser";
+import SystemUserEdit from "./SystemUserEdit";
 
 export default function Index() {
   return (
     <>
       <IndexNavbar fixed />
+      
       <section className="header relative pt-16 items-center flex h-screen max-h-300-px">
         <div className="container mx-auto items-center flex flex-wrap mt-16">
           <div className="w-full md:w-8/12 lg:w-6/12 xl:w-6/12 px-4 mt-16">
@@ -81,6 +84,7 @@ export default function Index() {
         </div>
         <div className="container-32xl px-4 mx-52">
           <div className="flex flex-wrap items-center">
+            
             <JobPostingList />
           </div>
 

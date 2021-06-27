@@ -1,8 +1,8 @@
 import axios from "axios";
 
 export default class AbilityService {
-    getAbilityByEmployeeId(id) {
-        return axios.get("http://localhost:8080/api/abilities/getAllByResumeEmployeeId?employeeId=" + id);
+    getAllByResumeId(id) {
+        return axios.get("http://localhost:8080/api/abilities/getAllByResumeId?resumeId=" + id);
     }
     add(id) {
         return axios.post('http://localhost:8080/api/abilities/add', { abilityName: "string", resumeId: 1, technologyName: "string" })

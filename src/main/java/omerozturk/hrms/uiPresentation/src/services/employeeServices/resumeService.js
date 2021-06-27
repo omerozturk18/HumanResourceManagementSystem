@@ -4,8 +4,11 @@ export default class ResumeService {
     getAll() {
         return axios.get("http://localhost:8080/api/resumes/getall");
     }
-    getByEmployeeId(id) {
-        return axios.get("http://localhost:8080/api/resumes/getByEmployeeForResume?employeeId=" + id);
+    getById(id) {
+        return axios.get("http://localhost:8080/api/resumes/getById?resumeId=" + id);
+    }
+    getByEmployeeIdAndDate(id) {
+        return axios.get("http://localhost:8080/api/resumes/getByEmployeeIdAndDate?employeeId=" + id);
     }
 
     add(resume) {
